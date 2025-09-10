@@ -1,0 +1,20 @@
+on:
+  pull:
+    branches:
+      - main
+
+jobs:
+  node-js-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checks the repository
+        uses: actions/checkout@v5
+      - name: set up node-js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 18
+      - name: install dependencies
+        run: npm install
+      - name: runs the build script
+        run: npm run build
